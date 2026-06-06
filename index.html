@@ -1,45 +1,60 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Kumiko Studio — Minimal Desk Objects</title>
-  <meta name="description" content="Japanese-inspired desk accessories crafted for those who care about the space they think in." />
+  <meta
+          name="description"
+          content="Japanese-inspired desk accessories crafted for those who care about the space they think in."
+  />
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet" />
+  <link
+          href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap"
+          rel="stylesheet"
+  />
 
   <style>
     /* ─── TOKENS ─────────────────────────────── */
     :root {
-      --ink:        #1c1c1a;
-      --ink-soft:   #4a4843;
-      --ink-muted:  #8a8680;
-      --paper:      #f7f4ef;
+      --ink: #1c1c1a;
+      --ink-soft: #4a4843;
+      --ink-muted: #8a8680;
+      --paper: #f7f4ef;
       --paper-warm: #ede9e2;
       --paper-cool: #f0eeeb;
-      --sand:       #c8b89a;
+      --sand: #c8b89a;
       --sand-light: #e4d9cc;
-      --accent:     #9b7e5a;
-      --border:     rgba(28,28,26,0.10);
-      --border-med: rgba(28,28,26,0.16);
+      --accent: #9b7e5a;
+      --border: rgba(28, 28, 26, 0.1);
+      --border-med: rgba(28, 28, 26, 0.16);
 
-      --font-display: 'Cormorant Garamond', Georgia, serif;
-      --font-body:    'DM Sans', sans-serif;
+      --font-display: "Cormorant Garamond", Georgia, serif;
+      --font-body: "DM Sans", sans-serif;
 
-      --radius-sm:  4px;
-      --radius-md:  8px;
-      --radius-lg:  16px;
+      --radius-sm: 4px;
+      --radius-md: 8px;
+      --radius-lg: 16px;
 
       --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
       --transition: 0.4s var(--ease-out);
     }
 
     /* ─── RESET ──────────────────────────────── */
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; font-size: 16px; }
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+    }
     body {
       font-family: var(--font-body);
       background: var(--paper);
@@ -48,13 +63,24 @@
       overflow-x: hidden;
       -webkit-font-smoothing: antialiased;
     }
-    img { display: block; width: 100%; height: 100%; object-fit: cover; }
-    a { color: inherit; text-decoration: none; }
-    button { cursor: pointer; font-family: var(--font-body); }
+    img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+    button {
+      cursor: pointer;
+      font-family: var(--font-body);
+    }
 
     /* ─── GRAIN OVERLAY ──────────────────────── */
     body::before {
-      content: '';
+      content: "";
       position: fixed;
       inset: 0;
       pointer-events: none;
@@ -68,16 +94,26 @@
     .reveal {
       opacity: 0;
       transform: translateY(24px);
-      transition: opacity 0.8s var(--ease-out), transform 0.8s var(--ease-out);
+      transition:
+              opacity 0.8s var(--ease-out),
+              transform 0.8s var(--ease-out);
     }
     .reveal.visible {
       opacity: 1;
       transform: translateY(0);
     }
-    .reveal-delay-1 { transition-delay: 0.1s; }
-    .reveal-delay-2 { transition-delay: 0.2s; }
-    .reveal-delay-3 { transition-delay: 0.3s; }
-    .reveal-delay-4 { transition-delay: 0.4s; }
+    .reveal-delay-1 {
+      transition-delay: 0.1s;
+    }
+    .reveal-delay-2 {
+      transition-delay: 0.2s;
+    }
+    .reveal-delay-3 {
+      transition-delay: 0.3s;
+    }
+    .reveal-delay-4 {
+      transition-delay: 0.4s;
+    }
 
     /* ─── LAYOUT ─────────────────────────────── */
     .container {
@@ -86,22 +122,30 @@
       padding: 0 24px;
     }
     @media (min-width: 768px) {
-      .container { padding: 0 48px; }
+      .container {
+        padding: 0 48px;
+      }
     }
     @media (min-width: 1200px) {
-      .container { padding: 0 64px; }
+      .container {
+        padding: 0 64px;
+      }
     }
 
     /* ─── NAV ────────────────────────────────── */
     nav {
       position: fixed;
-      top: 0; left: 0; right: 0;
+      top: 0;
+      left: 0;
+      right: 0;
       z-index: 100;
       padding: 20px 0;
-      transition: background 0.5s ease, border-bottom 0.5s ease;
+      transition:
+              background 0.5s ease,
+              border-bottom 0.5s ease;
     }
     nav.scrolled {
-      background: rgba(247,244,239,0.92);
+      background: rgba(247, 244, 239, 0.92);
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
       border-bottom: 1px solid var(--border);
@@ -114,8 +158,16 @@
       margin: 0 auto;
       padding: 0 24px;
     }
-    @media (min-width: 768px) { .nav-inner { padding: 0 48px; } }
-    @media (min-width: 1200px) { .nav-inner { padding: 0 64px; } }
+    @media (min-width: 768px) {
+      .nav-inner {
+        padding: 0 48px;
+      }
+    }
+    @media (min-width: 1200px) {
+      .nav-inner {
+        padding: 0 64px;
+      }
+    }
 
     .nav-logo {
       font-family: var(--font-display);
@@ -124,14 +176,20 @@
       letter-spacing: 0.08em;
       color: var(--ink);
     }
-    .nav-logo span { color: var(--accent); }
+    .nav-logo span {
+      color: var(--accent);
+    }
 
     .nav-links {
       display: none;
       gap: 36px;
       list-style: none;
     }
-    @media (min-width: 768px) { .nav-links { display: flex; } }
+    @media (min-width: 768px) {
+      .nav-links {
+        display: flex;
+      }
+    }
     .nav-links a {
       font-size: 0.78rem;
       letter-spacing: 0.12em;
@@ -139,7 +197,9 @@
       color: var(--ink-soft);
       transition: color var(--transition);
     }
-    .nav-links a:hover { color: var(--ink); }
+    .nav-links a:hover {
+      color: var(--ink);
+    }
 
     .nav-cta {
       display: none;
@@ -151,9 +211,16 @@
       border-radius: var(--radius-sm);
       color: var(--ink);
       background: transparent;
-      transition: background var(--transition), color var(--transition), border-color var(--transition);
+      transition:
+              background var(--transition),
+              color var(--transition),
+              border-color var(--transition);
     }
-    @media (min-width: 768px) { .nav-cta { display: block; } }
+    @media (min-width: 768px) {
+      .nav-cta {
+        display: block;
+      }
+    }
     .nav-cta:hover {
       background: var(--ink);
       color: var(--paper);
@@ -171,7 +238,10 @@
       overflow: hidden;
     }
     @media (min-width: 900px) {
-      #hero { grid-template-columns: 1fr 1fr; grid-template-rows: 1fr; }
+      #hero {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr;
+      }
     }
 
     .hero-content {
@@ -182,7 +252,11 @@
       position: relative;
       z-index: 2;
     }
-    @media (min-width: 768px) { .hero-content { padding: 140px 48px 80px; } }
+    @media (min-width: 768px) {
+      .hero-content {
+        padding: 140px 48px 80px;
+      }
+    }
     @media (min-width: 900px) {
       .hero-content {
         padding: 0 64px 100px 64px;
@@ -201,7 +275,7 @@
       gap: 12px;
     }
     .hero-eyebrow::before {
-      content: '';
+      content: "";
       display: block;
       width: 28px;
       height: 1px;
@@ -247,11 +321,16 @@
       color: var(--paper);
       border: 1px solid var(--ink);
       border-radius: var(--radius-sm);
-      transition: background var(--transition), color var(--transition);
+      transition:
+              background var(--transition),
+              color var(--transition);
       white-space: nowrap;
       min-height: 48px;
     }
-    .btn-primary:hover { background: var(--accent); border-color: var(--accent); }
+    .btn-primary:hover {
+      background: var(--accent);
+      border-color: var(--accent);
+    }
 
     .btn-secondary {
       padding: 14px 32px;
@@ -262,11 +341,15 @@
       color: var(--ink);
       border: 1px solid var(--border-med);
       border-radius: var(--radius-sm);
-      transition: border-color var(--transition), color var(--transition);
+      transition:
+              border-color var(--transition),
+              color var(--transition);
       white-space: nowrap;
       min-height: 48px;
     }
-    .btn-secondary:hover { border-color: var(--ink); }
+    .btn-secondary:hover {
+      border-color: var(--ink);
+    }
 
     .hero-visual {
       position: relative;
@@ -275,24 +358,40 @@
       overflow: hidden;
     }
     @media (min-width: 900px) {
-      .hero-visual { min-height: unset; height: 100%; }
+      .hero-visual {
+        min-height: unset;
+        height: 100%;
+      }
     }
 
     .hero-img-placeholder {
-      width: 100%; height: 100%;
-      background: linear-gradient(135deg, #e8e2d9 0%, #d4cbbf 40%, #c5bbb0 100%);
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(
+              135deg,
+              #e8e2d9 0%,
+              #d4cbbf 40%,
+              #c5bbb0 100%
+      );
       display: flex;
       align-items: center;
       justify-content: center;
       min-height: 360px;
     }
-    @media (min-width: 900px) { .hero-img-placeholder { min-height: unset; } }
+    @media (min-width: 900px) {
+      .hero-img-placeholder {
+        min-height: unset;
+      }
+    }
 
     .hero-img-inner {
       text-align: center;
       color: var(--ink-muted);
     }
-    .hero-img-inner svg { opacity: 0.35; margin: 0 auto 12px; }
+    .hero-img-inner svg {
+      opacity: 0.35;
+      margin: 0 auto 12px;
+    }
     .hero-img-inner p {
       font-size: 0.72rem;
       letter-spacing: 0.15em;
@@ -302,18 +401,26 @@
     /* Geometric kumiko accent */
     .hero-geo {
       position: absolute;
-      bottom: -60px; right: -60px;
-      width: 220px; height: 220px;
+      bottom: -60px;
+      right: -60px;
+      width: 220px;
+      height: 220px;
       opacity: 0.06;
       pointer-events: none;
     }
     @media (min-width: 900px) {
-      .hero-geo { width: 320px; height: 320px; bottom: -80px; right: -80px; }
+      .hero-geo {
+        width: 320px;
+        height: 320px;
+        bottom: -80px;
+        right: -80px;
+      }
     }
 
     .hero-scroll {
       position: absolute;
-      bottom: 36px; left: 50%;
+      bottom: 36px;
+      left: 50%;
       transform: translateX(-50%);
       display: flex;
       flex-direction: column;
@@ -326,16 +433,27 @@
       z-index: 2;
     }
     @media (min-width: 900px) {
-      .hero-scroll { left: 32px; transform: none; }
+      .hero-scroll {
+        left: 32px;
+        transform: none;
+      }
     }
     .hero-scroll-line {
-      width: 1px; height: 40px;
+      width: 1px;
+      height: 40px;
       background: var(--sand);
       animation: scrollPulse 2s ease-in-out infinite;
     }
     @keyframes scrollPulse {
-      0%, 100% { opacity: 0.4; transform: scaleY(1); }
-      50% { opacity: 1; transform: scaleY(0.6); }
+      0%,
+      100% {
+        opacity: 0.4;
+        transform: scaleY(1);
+      }
+      50% {
+        opacity: 1;
+        transform: scaleY(0.6);
+      }
     }
 
     /* ─── STRIP / MARQUEE ────────────────────── */
@@ -363,18 +481,28 @@
       gap: 64px;
     }
     .strip-item::after {
-      content: '·';
+      content: "·";
       color: var(--sand);
       font-size: 1rem;
     }
     @keyframes marquee {
-      0% { transform: translateX(0); }
-      100% { transform: translateX(-50%); }
+      0% {
+        transform: translateX(0);
+      }
+      100% {
+        transform: translateX(-50%);
+      }
     }
 
     /* ─── SECTION DEFAULTS ───────────────────── */
-    section { padding: 96px 0; }
-    @media (min-width: 768px) { section { padding: 128px 0; } }
+    section {
+      padding: 96px 0;
+    }
+    @media (min-width: 768px) {
+      section {
+        padding: 128px 0;
+      }
+    }
 
     .section-label {
       font-size: 0.68rem;
@@ -387,7 +515,7 @@
       gap: 12px;
     }
     .section-label::after {
-      content: '';
+      content: "";
       display: block;
       width: 32px;
       height: 1px;
@@ -411,7 +539,9 @@
     }
 
     /* ─── PRODUCTS ───────────────────────────── */
-    #products { background: var(--paper); }
+    #products {
+      background: var(--paper);
+    }
 
     .products-header {
       margin-bottom: 64px;
@@ -423,21 +553,40 @@
       gap: 2px;
     }
     @media (min-width: 600px) {
-      .products-grid { grid-template-columns: 1fr 1fr; }
+      .products-grid {
+        grid-template-columns: 1fr 1fr;
+      }
     }
     @media (min-width: 1000px) {
-      .products-grid { grid-template-columns: repeat(3, 1fr); }
+      .products-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
     }
 
     /* nth-child bg tones for all 6 cards */
     .product-card:nth-child(4) .product-img {
-      background: linear-gradient(135deg, #d6d1c9 0%, #c8c2b5 60%, #bab3a5 100%);
+      background: linear-gradient(
+              135deg,
+              #d6d1c9 0%,
+              #c8c2b5 60%,
+              #bab3a5 100%
+      );
     }
     .product-card:nth-child(5) .product-img {
-      background: linear-gradient(135deg, #dad4cb 0%, #cdc6b9 60%, #bfb8a9 100%);
+      background: linear-gradient(
+              135deg,
+              #dad4cb 0%,
+              #cdc6b9 60%,
+              #bfb8a9 100%
+      );
     }
     .product-card:nth-child(6) .product-img {
-      background: linear-gradient(135deg, #d8d3cb 0%, #cbc4b7 60%, #bdb6a8 100%);
+      background: linear-gradient(
+              135deg,
+              #d8d3cb 0%,
+              #cbc4b7 60%,
+              #bdb6a8 100%
+      );
     }
 
     .product-card {
@@ -449,22 +598,58 @@
       overflow: hidden;
       transition: transform 0.3s var(--ease-out);
     }
-    .product-card:hover { transform: translateY(-3px); }
+    .product-card:hover {
+      transform: translateY(-3px);
+    }
 
     .product-img {
       aspect-ratio: 4/3;
-      background: linear-gradient(135deg, #ddd7ce 0%, #cec8be 60%, #c0b9ae 100%);
+      background: linear-gradient(
+              135deg,
+              #ddd7ce 0%,
+              #cec8be 60%,
+              #c0b9ae 100%
+      );
       position: relative;
       overflow: hidden;
       flex-shrink: 0;
     }
 
-    /* Slightly different bg tones per card */
+    /* Real product photos */
+    .product-img img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      transition: transform 0.6s var(--ease-out);
+    }
+    .product-card:hover .product-img img {
+      transform: scale(1.04);
+    }
+
+    /* Portrait photo (Desk Tray 4284x5712) — crop from upper area so product shows */
+    .product-img.portrait img {
+      object-position: center 20%;
+    }
+
+    /* Slightly different bg tones per card (fallback if image missing) */
     .product-card:nth-child(2) .product-img {
-      background: linear-gradient(135deg, #d4cfc7 0%, #c9c3b8 60%, #bbb4a8 100%);
+      background: linear-gradient(
+              135deg,
+              #d4cfc7 0%,
+              #c9c3b8 60%,
+              #bbb4a8 100%
+      );
     }
     .product-card:nth-child(3) .product-img {
-      background: linear-gradient(135deg, #dbd4c8 0%, #cec6b8 60%, #c0b8a8 100%);
+      background: linear-gradient(
+              135deg,
+              #dbd4c8 0%,
+              #cec6b8 60%,
+              #c0b8a8 100%
+      );
     }
 
     .product-img-label {
@@ -474,10 +659,12 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      color: rgba(28,28,26,0.3);
+      color: rgba(28, 28, 26, 0.3);
       gap: 10px;
     }
-    .product-img-label svg { opacity: 0.5; }
+    .product-img-label svg {
+      opacity: 0.5;
+    }
     .product-img-label span {
       font-size: 0.65rem;
       letter-spacing: 0.18em;
@@ -486,7 +673,8 @@
 
     .product-badge {
       position: absolute;
-      top: 16px; right: 16px;
+      top: 16px;
+      right: 16px;
       padding: 5px 12px;
       font-size: 0.6rem;
       letter-spacing: 0.15em;
@@ -546,21 +734,29 @@
       border: none;
       background: none;
       padding: 0;
-      transition: color var(--transition), gap 0.3s var(--ease-out);
+      transition:
+              color var(--transition),
+              gap 0.3s var(--ease-out);
     }
-    .product-card:hover .product-cta { color: var(--ink); gap: 14px; }
+    .product-card:hover .product-cta {
+      color: var(--ink);
+      gap: 14px;
+    }
 
     .product-cta-arrow {
-      width: 20px; height: 1px;
+      width: 20px;
+      height: 1px;
       background: currentColor;
       position: relative;
       transition: width 0.3s var(--ease-out);
     }
     .product-cta-arrow::after {
-      content: '';
+      content: "";
       position: absolute;
-      right: 0; top: -3px;
-      width: 7px; height: 7px;
+      right: 0;
+      top: -3px;
+      width: 7px;
+      height: 7px;
       border-right: 1px solid currentColor;
       border-top: 1px solid currentColor;
       transform: rotate(45deg);
@@ -579,13 +775,26 @@
       gap: 80px;
     }
     @media (min-width: 900px) {
-      .philosophy-grid { grid-template-columns: 1fr 1fr; gap: 120px; align-items: center; }
+      .philosophy-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 120px;
+        align-items: center;
+      }
     }
 
-    .philosophy-content .section-label { color: var(--sand); }
-    .philosophy-content .section-label::after { background: rgba(200,184,154,0.25); }
-    .philosophy-content .section-title { color: var(--paper); }
-    .philosophy-content .section-subtitle { color: rgba(247,244,239,0.65); max-width: 440px; }
+    .philosophy-content .section-label {
+      color: var(--sand);
+    }
+    .philosophy-content .section-label::after {
+      background: rgba(200, 184, 154, 0.25);
+    }
+    .philosophy-content .section-title {
+      color: var(--paper);
+    }
+    .philosophy-content .section-subtitle {
+      color: rgba(247, 244, 239, 0.65);
+      max-width: 440px;
+    }
 
     .philosophy-principles {
       margin-top: 48px;
@@ -621,14 +830,14 @@
     .principle-text p {
       font-size: 0.82rem;
       font-weight: 300;
-      color: rgba(247,244,239,0.55);
+      color: rgba(247, 244, 239, 0.55);
       line-height: 1.7;
     }
 
     .philosophy-visual {
       aspect-ratio: 3/4;
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.08);
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
       border-radius: var(--radius-md);
       display: flex;
       align-items: center;
@@ -646,10 +855,13 @@
 
     .philosophy-img-label {
       text-align: center;
-      color: rgba(247,244,239,0.25);
+      color: rgba(247, 244, 239, 0.25);
       z-index: 1;
     }
-    .philosophy-img-label svg { margin: 0 auto 12px; opacity: 0.5; }
+    .philosophy-img-label svg {
+      margin: 0 auto 12px;
+      opacity: 0.5;
+    }
     .philosophy-img-label p {
       font-size: 0.65rem;
       letter-spacing: 0.18em;
@@ -657,7 +869,9 @@
     }
 
     /* ─── ABOUT ──────────────────────────────── */
-    #about { background: var(--paper-warm); }
+    #about {
+      background: var(--paper-warm);
+    }
 
     .about-grid {
       display: grid;
@@ -665,13 +879,21 @@
       gap: 72px;
     }
     @media (min-width: 900px) {
-      .about-grid { grid-template-columns: 1fr 1fr; gap: 100px; align-items: center; }
+      .about-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 100px;
+        align-items: center;
+      }
     }
 
     .about-visual {
       order: -1;
     }
-    @media (min-width: 900px) { .about-visual { order: 1; } }
+    @media (min-width: 900px) {
+      .about-visual {
+        order: 1;
+      }
+    }
 
     .about-img-stack {
       position: relative;
@@ -686,14 +908,17 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      color: rgba(28,28,26,0.25);
+      color: rgba(28, 28, 26, 0.25);
       position: relative;
       overflow: hidden;
     }
     .about-img-label {
       text-align: center;
     }
-    .about-img-label svg { margin: 0 auto 10px; opacity: 0.5; }
+    .about-img-label svg {
+      margin: 0 auto 10px;
+      opacity: 0.5;
+    }
     .about-img-label span {
       display: block;
       font-size: 0.65rem;
@@ -703,8 +928,10 @@
 
     .about-img-accent {
       position: absolute;
-      bottom: -20px; right: -20px;
-      width: 140px; height: 140px;
+      bottom: -20px;
+      right: -20px;
+      width: 140px;
+      height: 140px;
       background: linear-gradient(135deg, #c8b89a 0%, #b8a68a 100%);
       border-radius: var(--radius-sm);
       display: flex;
@@ -713,7 +940,7 @@
     }
     .about-img-accent-inner {
       text-align: center;
-      color: rgba(247,244,239,0.7);
+      color: rgba(247, 244, 239, 0.7);
     }
     .about-img-accent-inner span {
       display: block;
@@ -731,7 +958,9 @@
       margin-bottom: 4px;
     }
 
-    .about-copy { max-width: 520px; }
+    .about-copy {
+      max-width: 520px;
+    }
 
     .about-quote {
       font-family: var(--font-display);
@@ -777,9 +1006,14 @@
     }
 
     /* ─── GALLERY ────────────────────────────── */
-    #gallery { background: var(--paper); padding-bottom: 0; }
+    #gallery {
+      background: var(--paper);
+      padding-bottom: 0;
+    }
 
-    .gallery-header { margin-bottom: 48px; }
+    .gallery-header {
+      margin-bottom: 48px;
+    }
 
     .gallery-grid {
       display: grid;
@@ -788,7 +1022,9 @@
       gap: 2px;
     }
     @media (min-width: 768px) {
-      .gallery-grid { grid-template-columns: 2fr 1fr 1fr; }
+      .gallery-grid {
+        grid-template-columns: 2fr 1fr 1fr;
+      }
     }
 
     .gallery-item {
@@ -800,36 +1036,63 @@
       grid-row: span 2;
     }
     @media (max-width: 767px) {
-      .gallery-item:first-child { grid-column: span 2; grid-row: span 1; }
+      .gallery-item:first-child {
+        grid-column: span 2;
+        grid-row: span 1;
+      }
     }
 
     .gallery-img {
-      width: 100%; height: 100%;
+      width: 100%;
+      height: 100%;
       min-height: 200px;
       display: flex;
       align-items: center;
       justify-content: center;
       transition: transform 0.6s var(--ease-out);
     }
-    @media (min-width: 768px) { .gallery-img { min-height: 260px; } }
-    .gallery-item:first-child .gallery-img { min-height: 400px; }
     @media (min-width: 768px) {
-      .gallery-item:first-child .gallery-img { min-height: 520px; }
+      .gallery-img {
+        min-height: 260px;
+      }
+    }
+    .gallery-item:first-child .gallery-img {
+      min-height: 400px;
+    }
+    @media (min-width: 768px) {
+      .gallery-item:first-child .gallery-img {
+        min-height: 520px;
+      }
     }
 
-    .gallery-item:hover .gallery-img { transform: scale(1.03); }
+    .gallery-item:hover .gallery-img {
+      transform: scale(1.03);
+    }
 
-    .gallery-bg-1 { background: linear-gradient(155deg, #ddd7cf 0%, #cdc7bc 100%); }
-    .gallery-bg-2 { background: linear-gradient(155deg, #d6d0c6 0%, #c9c2b5 100%); }
-    .gallery-bg-3 { background: linear-gradient(155deg, #d9d3ca 0%, #ccc5b8 100%); }
-    .gallery-bg-4 { background: linear-gradient(155deg, #dbd5cb 0%, #cfc8bc 100%); }
-    .gallery-bg-5 { background: linear-gradient(155deg, #d7d1c8 0%, #cbc4b7 100%); }
+    .gallery-bg-1 {
+      background: linear-gradient(155deg, #ddd7cf 0%, #cdc7bc 100%);
+    }
+    .gallery-bg-2 {
+      background: linear-gradient(155deg, #d6d0c6 0%, #c9c2b5 100%);
+    }
+    .gallery-bg-3 {
+      background: linear-gradient(155deg, #d9d3ca 0%, #ccc5b8 100%);
+    }
+    .gallery-bg-4 {
+      background: linear-gradient(155deg, #dbd5cb 0%, #cfc8bc 100%);
+    }
+    .gallery-bg-5 {
+      background: linear-gradient(155deg, #d7d1c8 0%, #cbc4b7 100%);
+    }
 
     .gallery-placeholder {
       text-align: center;
-      color: rgba(28,28,26,0.22);
+      color: rgba(28, 28, 26, 0.22);
     }
-    .gallery-placeholder svg { margin: 0 auto 8px; opacity: 0.4; }
+    .gallery-placeholder svg {
+      margin: 0 auto 8px;
+      opacity: 0.4;
+    }
     .gallery-placeholder span {
       display: block;
       font-size: 0.6rem;
@@ -844,22 +1107,32 @@
       padding: 128px 0;
     }
 
-    .contact-inner { max-width: 560px; margin: 0 auto; }
+    .contact-inner {
+      max-width: 560px;
+      margin: 0 auto;
+    }
 
     .contact-inner .section-label {
       justify-content: center;
     }
-    .contact-inner .section-label::after { display: none; }
+    .contact-inner .section-label::after {
+      display: none;
+    }
     .contact-inner .section-label::before {
-      content: '';
+      content: "";
       display: block;
       width: 32px;
       height: 1px;
       background: var(--sand-light);
     }
 
-    .contact-inner .section-title { margin: 0 auto 16px; }
-    .contact-inner .section-subtitle { margin: 0 auto 48px; max-width: 400px; }
+    .contact-inner .section-title {
+      margin: 0 auto 16px;
+    }
+    .contact-inner .section-subtitle {
+      margin: 0 auto 48px;
+      max-width: 400px;
+    }
 
     .contact-email {
       display: inline-flex;
@@ -872,10 +1145,17 @@
       border-bottom: 1px solid var(--border-med);
       padding-bottom: 8px;
       margin-bottom: 56px;
-      transition: border-color var(--transition), color var(--transition);
+      transition:
+              border-color var(--transition),
+              color var(--transition);
     }
-    .contact-email:hover { color: var(--accent); border-color: var(--accent); }
-    .contact-email svg { flex-shrink: 0; }
+    .contact-email:hover {
+      color: var(--accent);
+      border-color: var(--accent);
+    }
+    .contact-email svg {
+      flex-shrink: 0;
+    }
 
     .social-links {
       display: flex;
@@ -896,9 +1176,12 @@
       color: var(--ink-muted);
       transition: color var(--transition);
     }
-    .social-link:hover { color: var(--ink); }
+    .social-link:hover {
+      color: var(--ink);
+    }
     .social-icon {
-      width: 40px; height: 40px;
+      width: 40px;
+      height: 40px;
       border: 1px solid var(--border);
       border-radius: 50%;
       display: flex;
@@ -906,7 +1189,9 @@
       justify-content: center;
       transition: border-color var(--transition);
     }
-    .social-link:hover .social-icon { border-color: var(--ink); }
+    .social-link:hover .social-icon {
+      border-color: var(--ink);
+    }
 
     /* ─── FOOTER ─────────────────────────────── */
     footer {
@@ -924,13 +1209,13 @@
       font-family: var(--font-display);
       font-size: 1rem;
       font-weight: 300;
-      color: rgba(247,244,239,0.5);
+      color: rgba(247, 244, 239, 0.5);
       letter-spacing: 0.08em;
     }
     .footer-copy {
       font-size: 0.68rem;
       letter-spacing: 0.1em;
-      color: rgba(247,244,239,0.3);
+      color: rgba(247, 244, 239, 0.3);
     }
 
     /* ─── DIVIDER ────────────────────────────── */
@@ -949,561 +1234,1000 @@
     }
 
     /* ─── SELECTION ──────────────────────────── */
-    ::selection { background: var(--sand-light); color: var(--ink); }
+    ::selection {
+      background: var(--sand-light);
+      color: var(--ink);
+    }
   </style>
 </head>
 <body>
+<!-- ═══ NAV ═══════════════════════════════════ -->
+<nav id="nav" aria-label="Main navigation">
+  <div class="nav-inner">
+    <a href="#hero" class="nav-logo">Kumiko<span>·</span>Studio</a>
+    <ul class="nav-links" role="list">
+      <li><a href="#products">Objects</a></li>
+      <li><a href="#philosophy">Philosophy</a></li>
+      <li><a href="#about">Studio</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a
+            href="https://etsy.com"
+            target="_blank"
+            rel="noopener"
+            class="nav-cta"
+    >Shop on Etsy</a
+    >
+  </div>
+</nav>
 
-  <!-- ═══ NAV ═══════════════════════════════════ -->
-  <nav id="nav" aria-label="Main navigation">
-    <div class="nav-inner">
-      <a href="#hero" class="nav-logo">Kumiko<span>·</span>Studio</a>
-      <ul class="nav-links" role="list">
-        <li><a href="#products">Objects</a></li>
-        <li><a href="#philosophy">Philosophy</a></li>
-        <li><a href="#about">Studio</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-      <a href="https://etsy.com" target="_blank" rel="noopener" class="nav-cta">Shop on Etsy</a>
-    </div>
-  </nav>
-
-  <!-- ═══ HERO ═══════════════════════════════════ -->
-  <section id="hero" aria-label="Hero">
-    <div class="hero-content">
-      <p class="hero-eyebrow reveal">Japanese-inspired desk objects</p>
-      <h1 class="hero-title reveal reveal-delay-1">
-        Objects that <em>earn</em><br>their place.
-      </h1>
-      <p class="hero-tagline reveal reveal-delay-2">
-        Minimal desk accessories shaped by Japanese design principles.
-        Made one at a time. Designed to last.
-      </p>
-      <div class="hero-actions reveal reveal-delay-3">
-        <a href="#products" class="btn-primary">View Objects</a>
-        <a href="https://etsy.com" target="_blank" rel="noopener" class="btn-secondary">Shop on Etsy</a>
-      </div>
-    </div>
-
-    <div class="hero-visual" aria-hidden="true">
-      <div class="hero-img-placeholder">
-        <div class="hero-img-inner">
-          <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect x="12" y="8" width="24" height="32" rx="2" stroke="currentColor" stroke-width="1.5"/>
-            <circle cx="24" cy="24" r="6" stroke="currentColor" stroke-width="1.5"/>
-            <line x1="18" y1="14" x2="30" y2="14" stroke="currentColor" stroke-width="1.5"/>
-          </svg>
-          <p>Hero lifestyle photo</p>
-        </div>
-      </div>
-
-      <!-- Kumiko geometry SVG accent -->
-      <svg class="hero-geo" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <polygon points="100,0 200,50 200,150 100,200 0,150 0,50" stroke="#1c1c1a" stroke-width="1" fill="none"/>
-        <polygon points="100,20 180,60 180,140 100,180 20,140 20,60" stroke="#1c1c1a" stroke-width="1" fill="none"/>
-        <polygon points="100,40 160,70 160,130 100,160 40,130 40,70" stroke="#1c1c1a" stroke-width="1" fill="none"/>
-        <line x1="100" y1="0" x2="100" y2="200" stroke="#1c1c1a" stroke-width="0.5"/>
-        <line x1="0" y1="100" x2="200" y2="100" stroke="#1c1c1a" stroke-width="0.5"/>
-        <line x1="0" y1="50" x2="200" y2="150" stroke="#1c1c1a" stroke-width="0.5"/>
-        <line x1="0" y1="150" x2="200" y2="50" stroke="#1c1c1a" stroke-width="0.5"/>
-      </svg>
-    </div>
-
-    <div class="hero-scroll" aria-hidden="true">
-      <div class="hero-scroll-line"></div>
-      <span>Scroll</span>
-    </div>
-  </section>
-
-  <!-- ═══ MARQUEE STRIP ═══════════════════════════ -->
-  <div class="strip" aria-hidden="true" role="presentation">
-    <div class="strip-inner">
-      <!-- doubled for seamless loop -->
-      <span class="strip-item">Matte finishes</span>
-      <span class="strip-item">Kumiko geometry</span>
-      <span class="strip-item">Japandi aesthetic</span>
-      <span class="strip-item">Functional minimal</span>
-      <span class="strip-item">Desk-first design</span>
-      <span class="strip-item">Made with Bambu Lab P1S</span>
-      <span class="strip-item">Matte finishes</span>
-      <span class="strip-item">Kumiko geometry</span>
-      <span class="strip-item">Japandi aesthetic</span>
-      <span class="strip-item">Functional minimal</span>
-      <span class="strip-item">Desk-first design</span>
-      <span class="strip-item">Made with Bambu Lab P1S</span>
+<!-- ═══ HERO ═══════════════════════════════════ -->
+<section id="hero" aria-label="Hero">
+  <div class="hero-content">
+    <p class="hero-eyebrow reveal">Japanese-inspired desk objects</p>
+    <h1 class="hero-title reveal reveal-delay-1">
+      Objects that <em>earn</em><br />their place.
+    </h1>
+    <p class="hero-tagline reveal reveal-delay-2">
+      Minimal desk accessories shaped by Japanese design principles. Made
+      one at a time. Designed to last.
+    </p>
+    <div class="hero-actions reveal reveal-delay-3">
+      <a href="#products" class="btn-primary">View Objects</a>
+      <a
+              href="https://etsy.com"
+              target="_blank"
+              rel="noopener"
+              class="btn-secondary"
+      >Shop on Etsy</a
+      >
     </div>
   </div>
 
-  <!-- ═══ PRODUCTS ════════════════════════════════ -->
-  <section id="products" aria-labelledby="products-heading">
-    <div class="container">
-      <div class="products-header">
-        <p class="section-label reveal">The objects</p>
-        <h2 id="products-heading" class="section-title reveal reveal-delay-1">
-          Considered pieces<br>for considered spaces.
-        </h2>
-        <p class="section-subtitle reveal reveal-delay-2">
-          Each object begins as a constraint: one surface, one function, no excess.
-          Only what earns its place on the desk remains.
-        </p>
-      </div>
-
-      <div class="products-grid">
-        <!-- Product 1 -->
-        <article class="product-card reveal reveal-delay-1">
-          <div class="product-img">
-            <div class="product-img-label" aria-label="Product image placeholder">
-              <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <rect x="6" y="10" width="24" height="16" rx="2" stroke="currentColor" stroke-width="1.2"/>
-                <path d="M13 10V8a1 1 0 011-1h8a1 1 0 011 1v2" stroke="currentColor" stroke-width="1.2"/>
-              </svg>
-              <span>Product photo</span>
-            </div>
-          </div>
-          <div class="product-info">
-            <h3 class="product-name">Japandi Controller Stand</h3>
-            <p class="product-desc">
-              Hexagonal geometry borrowed from traditional Kumiko joinery.
-              Holds any controller at a natural display angle. No adhesive, no assembly.
-            </p>
-            <div class="product-footer">
-              <span class="product-price">View on Etsy</span>
-              <a href="https://etsy.com" target="_blank" rel="noopener" class="product-cta" aria-label="View Japandi Controller Stand on Etsy">
-                Shop now
-                <span class="product-cta-arrow" aria-hidden="true"></span>
-              </a>
-            </div>
-          </div>
-        </article>
-
-        <!-- Product 2 -->
-        <article class="product-card reveal reveal-delay-2">
-          <div class="product-img">
-            <div class="product-img-label" aria-label="Product image placeholder">
-              <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <rect x="4" y="10" width="12" height="14" rx="2" stroke="currentColor" stroke-width="1.2"/>
-                <rect x="20" y="10" width="12" height="14" rx="2" stroke="currentColor" stroke-width="1.2"/>
-                <path d="M16 17h4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
-              </svg>
-              <span>Product photo</span>
-            </div>
-            <span class="product-badge">Popular</span>
-          </div>
-          <div class="product-info">
-            <h3 class="product-name">Japandi Dual Controller Stand</h3>
-            <p class="product-desc">
-              Two controllers, one clean surface. Side-by-side display with a shared geometric base — for setups that refuse to choose.
-            </p>
-            <div class="product-footer">
-              <span class="product-price">View on Etsy</span>
-              <a href="https://etsy.com" target="_blank" rel="noopener" class="product-cta" aria-label="View Japandi Dual Controller Stand on Etsy">
-                Shop now
-                <span class="product-cta-arrow" aria-hidden="true"></span>
-              </a>
-            </div>
-          </div>
-        </article>
-
-        <!-- Product 3 -->
-        <article class="product-card reveal reveal-delay-3">
-          <div class="product-img">
-            <div class="product-img-label" aria-label="Product image placeholder">
-              <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <rect x="5" y="14" width="26" height="14" rx="2" stroke="currentColor" stroke-width="1.2"/>
-                <path d="M10 14V11a2 2 0 012-2h12a2 2 0 012 2v3" stroke="currentColor" stroke-width="1.2"/>
-              </svg>
-              <span>Product photo</span>
-            </div>
-          </div>
-          <div class="product-info">
-            <h3 class="product-name">Japandi Medium Desk Tray</h3>
-            <p class="product-desc">
-              A low-profile catch-all for the things that belong on your desk. Clean edges, matte finish, no visual noise.
-            </p>
-            <div class="product-footer">
-              <span class="product-price">View on Etsy</span>
-              <a href="https://etsy.com" target="_blank" rel="noopener" class="product-cta" aria-label="View Japandi Medium Desk Tray on Etsy">
-                Shop now
-                <span class="product-cta-arrow" aria-hidden="true"></span>
-              </a>
-            </div>
-          </div>
-        </article>
-
-        <!-- Product 4 -->
-        <article class="product-card reveal reveal-delay-1">
-          <div class="product-img">
-            <div class="product-img-label" aria-label="Product image placeholder">
-              <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <rect x="6" y="16" width="24" height="12" rx="2" stroke="currentColor" stroke-width="1.2"/>
-                <line x1="11" y1="16" x2="11" y2="10" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
-                <line x1="18" y1="16" x2="18" y2="8" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
-                <line x1="25" y1="16" x2="25" y2="11" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
-              </svg>
-              <span>Product photo</span>
-            </div>
-          </div>
-          <div class="product-info">
-            <h3 class="product-name">Japandi Pen Tray</h3>
-            <p class="product-desc">
-              Keeps your essentials in reach without disorder. Proportioned for pens, markers, and a ruler — nothing more.
-            </p>
-            <div class="product-footer">
-              <span class="product-price">View on Etsy</span>
-              <a href="https://etsy.com" target="_blank" rel="noopener" class="product-cta" aria-label="View Japandi Pen Tray on Etsy">
-                Shop now
-                <span class="product-cta-arrow" aria-hidden="true"></span>
-              </a>
-            </div>
-          </div>
-        </article>
-
-        <!-- Product 5 -->
-        <article class="product-card reveal reveal-delay-2">
-          <div class="product-img">
-            <div class="product-img-label" aria-label="Product image placeholder">
-              <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <rect x="5" y="8" width="8" height="20" rx="1.5" stroke="currentColor" stroke-width="1.2"/>
-                <rect x="14" y="12" width="8" height="16" rx="1.5" stroke="currentColor" stroke-width="1.2"/>
-                <rect x="23" y="15" width="8" height="13" rx="1.5" stroke="currentColor" stroke-width="1.2"/>
-              </svg>
-              <span>Product photo</span>
-            </div>
-          </div>
-          <div class="product-info">
-            <h3 class="product-name">Japandi Storage Organiser</h3>
-            <p class="product-desc">
-              Dedicated slots for USB drives, SD cards, and microSD cards. Every small thing in its exact place — always findable.
-            </p>
-            <div class="product-footer">
-              <span class="product-price">View on Etsy</span>
-              <a href="https://etsy.com" target="_blank" rel="noopener" class="product-cta" aria-label="View Japandi Storage Organiser on Etsy">
-                Shop now
-                <span class="product-cta-arrow" aria-hidden="true"></span>
-              </a>
-            </div>
-          </div>
-        </article>
-
-        <!-- Product 6 -->
-        <article class="product-card reveal reveal-delay-3">
-          <div class="product-img">
-            <div class="product-img-label" aria-label="Product image placeholder">
-              <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="18" cy="18" r="10" stroke="currentColor" stroke-width="1.2"/>
-                <path d="M18 8 L26 13 L26 23 L18 28 L10 23 L10 13 Z" stroke="currentColor" stroke-width="1" fill="none"/>
-                <circle cx="18" cy="18" r="3" stroke="currentColor" stroke-width="1"/>
-              </svg>
-              <span>Product photo</span>
-            </div>
-            <span class="product-badge">Set of 4</span>
-          </div>
-          <div class="product-info">
-            <h3 class="product-name">Kumiko Coaster Set</h3>
-            <p class="product-desc">
-              Four coasters with the Kumiko lattice pattern, plus a matching holder. The only thing on the desk that should make a mark — and doesn't.
-            </p>
-            <div class="product-footer">
-              <span class="product-price">View on Etsy</span>
-              <a href="https://etsy.com" target="_blank" rel="noopener" class="product-cta" aria-label="View Kumiko Coaster Set on Etsy">
-                Shop now
-                <span class="product-cta-arrow" aria-hidden="true"></span>
-              </a>
-            </div>
-          </div>
-        </article>
+  <div class="hero-visual" aria-hidden="true">
+    <div class="hero-img-placeholder">
+      <div class="hero-img-inner">
+        <svg
+                width="48"
+                height="48"
+                viewBox="0 0 48 48"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+        >
+          <rect
+                  x="12"
+                  y="8"
+                  width="24"
+                  height="32"
+                  rx="2"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+          />
+          <circle
+                  cx="24"
+                  cy="24"
+                  r="6"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+          />
+          <line
+                  x1="18"
+                  y1="14"
+                  x2="30"
+                  y2="14"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+          />
+        </svg>
+        <p>Hero lifestyle photo</p>
       </div>
     </div>
-  </section>
 
-  <!-- ═══ PHILOSOPHY ══════════════════════════════ -->
-  <section id="philosophy" aria-labelledby="philosophy-heading">
-    <div class="container">
-      <div class="philosophy-grid">
-        <div class="philosophy-content">
-          <p class="section-label reveal">Design principles</p>
-          <h2 id="philosophy-heading" class="section-title reveal reveal-delay-1">
-            Less, but<br>considered.
-          </h2>
-          <p class="section-subtitle reveal reveal-delay-2">
-            Every Kumiko Studio object passes a single test:
-            does it make the space better, or does it merely fill it?
+    <!-- Kumiko geometry SVG accent -->
+    <svg
+            class="hero-geo"
+            viewBox="0 0 200 200"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            aria-hidden="true"
+    >
+      <polygon
+              points="100,0 200,50 200,150 100,200 0,150 0,50"
+              stroke="#1c1c1a"
+              stroke-width="1"
+              fill="none"
+      />
+      <polygon
+              points="100,20 180,60 180,140 100,180 20,140 20,60"
+              stroke="#1c1c1a"
+              stroke-width="1"
+              fill="none"
+      />
+      <polygon
+              points="100,40 160,70 160,130 100,160 40,130 40,70"
+              stroke="#1c1c1a"
+              stroke-width="1"
+              fill="none"
+      />
+      <line
+              x1="100"
+              y1="0"
+              x2="100"
+              y2="200"
+              stroke="#1c1c1a"
+              stroke-width="0.5"
+      />
+      <line
+              x1="0"
+              y1="100"
+              x2="200"
+              y2="100"
+              stroke="#1c1c1a"
+              stroke-width="0.5"
+      />
+      <line
+              x1="0"
+              y1="50"
+              x2="200"
+              y2="150"
+              stroke="#1c1c1a"
+              stroke-width="0.5"
+      />
+      <line
+              x1="0"
+              y1="150"
+              x2="200"
+              y2="50"
+              stroke="#1c1c1a"
+              stroke-width="0.5"
+      />
+    </svg>
+  </div>
+
+  <div class="hero-scroll" aria-hidden="true">
+    <div class="hero-scroll-line"></div>
+    <span>Scroll</span>
+  </div>
+</section>
+
+<!-- ═══ MARQUEE STRIP ═══════════════════════════ -->
+<div class="strip" aria-hidden="true" role="presentation">
+  <div class="strip-inner">
+    <!-- doubled for seamless loop -->
+    <span class="strip-item">Matte finishes</span>
+    <span class="strip-item">Kumiko geometry</span>
+    <span class="strip-item">Japandi aesthetic</span>
+    <span class="strip-item">Functional minimal</span>
+    <span class="strip-item">Desk-first design</span>
+    <span class="strip-item">Made with Bambu Lab P1S</span>
+    <span class="strip-item">Matte finishes</span>
+    <span class="strip-item">Kumiko geometry</span>
+    <span class="strip-item">Japandi aesthetic</span>
+    <span class="strip-item">Functional minimal</span>
+    <span class="strip-item">Desk-first design</span>
+    <span class="strip-item">Made with Bambu Lab P1S</span>
+  </div>
+</div>
+
+<!-- ═══ PRODUCTS ════════════════════════════════ -->
+<section id="products" aria-labelledby="products-heading">
+  <div class="container">
+    <div class="products-header">
+      <p class="section-label reveal">The objects</p>
+      <h2 id="products-heading" class="section-title reveal reveal-delay-1">
+        Considered pieces<br />for considered spaces.
+      </h2>
+      <p class="section-subtitle reveal reveal-delay-2">
+        Each object begins as a constraint: one surface, one function, no
+        excess. Only what earns its place on the desk remains.
+      </p>
+    </div>
+
+    <div class="products-grid">
+      <!-- Product 1 -->
+      <article class="product-card reveal reveal-delay-1">
+        <div class="product-img">
+          <img
+                  src="images/Slats Xbox Single Controller Stand.png"
+                  alt="Japandi Controller Stand"
+                  loading="lazy"
+          />
+          <span class="product-badge">Popular</span>
+        </div>
+        <div class="product-info">
+          <h3 class="product-name">Japandi Controller Stand</h3>
+          <p class="product-desc">
+            Hexagonal geometry borrowed from traditional Kumiko joinery.
+            Holds any controller at a natural display angle. No adhesive, no
+            assembly.
           </p>
-
-          <dl class="philosophy-principles">
-            <div class="principle reveal reveal-delay-1">
-              <dt class="principle-num">01</dt>
-              <dd class="principle-text">
-                <h4>Ma — negative space</h4>
-                <p>Japanese design gives weight to emptiness. Our objects are as defined by what they remove as what they add.</p>
-              </dd>
-            </div>
-            <div class="principle reveal reveal-delay-2">
-              <dt class="principle-num">02</dt>
-              <dd class="principle-text">
-                <h4>Functional geometry</h4>
-                <p>Kumiko joinery patterns carry structural logic, not decoration. Every angle exists because physics required it.</p>
-              </dd>
-            </div>
-            <div class="principle reveal reveal-delay-3">
-              <dt class="principle-num">03</dt>
-              <dd class="principle-text">
-                <h4>Matte over gloss</h4>
-                <p>Surfaces that absorb light feel calmer. We use matte PLA finishes exclusively. No shine, no noise.</p>
-              </dd>
-            </div>
-          </dl>
-        </div>
-
-        <div class="philosophy-visual reveal" aria-label="Philosophy visual placeholder" role="img">
-          <!-- Kumiko lattice pattern -->
-          <svg class="kumiko-pattern" viewBox="0 0 300 400" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <defs>
-              <pattern id="kumiko" x="0" y="0" width="50" height="50" patternUnits="userSpaceOnUse">
-                <path d="M25,0 L50,25 L25,50 L0,25 Z" fill="none" stroke="#f7f4ef" stroke-width="0.8"/>
-                <path d="M25,10 L40,25 L25,40 L10,25 Z" fill="none" stroke="#f7f4ef" stroke-width="0.5"/>
-                <line x1="25" y1="0" x2="25" y2="50" stroke="#f7f4ef" stroke-width="0.4"/>
-                <line x1="0" y1="25" x2="50" y2="25" stroke="#f7f4ef" stroke-width="0.4"/>
-              </pattern>
-            </defs>
-            <rect width="300" height="400" fill="url(#kumiko)"/>
-          </svg>
-          <div class="philosophy-img-label">
-            <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <rect x="4" y="4" width="32" height="32" stroke="#f7f4ef" stroke-width="1"/>
-              <path d="M4 4l32 32M36 4L4 36" stroke="#f7f4ef" stroke-width="0.6" opacity="0.5"/>
-            </svg>
-            <p>Product photo</p>
+          <div class="product-footer">
+            <span class="product-price">View on Etsy</span>
+            <a
+                    href="https://etsy.com"
+                    target="_blank"
+                    rel="noopener"
+                    class="product-cta"
+                    aria-label="View Japandi Controller Stand on Etsy"
+            >
+              Shop now
+              <span class="product-cta-arrow" aria-hidden="true"></span>
+            </a>
           </div>
         </div>
-      </div>
+      </article>
+      <!-- Product 2 -->
+      <article class="product-card reveal reveal-delay-2">
+        <div class="product-img">
+          <img
+                  src="images/Dual Controller Stand.png"
+                  alt="Japandi Dual Controller Stand"
+                  loading="lazy"
+          />
+          <span class="product-badge">New</span>
+        </div>
+        <div class="product-info">
+          <h3 class="product-name">Japandi Dual Controller Stand</h3>
+          <p class="product-desc">
+            Two controllers, one clean surface. Side-by-side display with a
+            shared geometric base — for setups that refuse to choose.
+          </p>
+          <div class="product-footer">
+            <span class="product-price">View on Etsy</span>
+            <a
+                    href="https://etsy.com"
+                    target="_blank"
+                    rel="noopener"
+                    class="product-cta"
+                    aria-label="View Japandi Dual Controller Stand on Etsy"
+            >
+              Shop now
+              <span class="product-cta-arrow" aria-hidden="true"></span>
+            </a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Product 3 -->
+      <article class="product-card reveal reveal-delay-3">
+        <div class="product-img portrait">
+          <img
+                  src="images/Medium Desk Tray.png"
+                  alt="Japandi Medium Desk Tray"
+                  loading="lazy"
+          />
+        </div>
+        <div class="product-info">
+          <h3 class="product-name">Japandi Medium Desk Tray</h3>
+          <p class="product-desc">
+            A low-profile catch-all for the things that belong on your desk.
+            Clean edges, matte finish, no visual noise.
+          </p>
+          <div class="product-footer">
+            <span class="product-price">View on Etsy</span>
+            <a
+                    href="https://etsy.com"
+                    target="_blank"
+                    rel="noopener"
+                    class="product-cta"
+                    aria-label="View Japandi Medium Desk Tray on Etsy"
+            >
+              Shop now
+              <span class="product-cta-arrow" aria-hidden="true"></span>
+            </a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Product 4 -->
+      <article class="product-card reveal reveal-delay-1">
+        <div class="product-img">
+          <img
+                  src="images/Pen Tray.png"
+                  alt="Japandi Pen Tray"
+                  loading="lazy"
+          />
+        </div>
+        <div class="product-info">
+          <h3 class="product-name">Japandi Pen Tray</h3>
+          <p class="product-desc">
+            Keeps your essentials in reach without disorder. Proportioned
+            for pens, markers, and a ruler — nothing more.
+          </p>
+          <div class="product-footer">
+            <span class="product-price">View on Etsy</span>
+            <a
+                    href="https://etsy.com"
+                    target="_blank"
+                    rel="noopener"
+                    class="product-cta"
+                    aria-label="View Japandi Pen Tray on Etsy"
+            >
+              Shop now
+              <span class="product-cta-arrow" aria-hidden="true"></span>
+            </a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Product 5 -->
+      <article class="product-card reveal reveal-delay-2">
+        <div class="product-img">
+          <img
+                  src="images/USB Holder.png"
+                  alt="Japandi Storage Organiser — USB / SD / microSD Card Holder"
+                  loading="lazy"
+          />
+        </div>
+        <div class="product-info">
+          <h3 class="product-name">Japandi Storage Organiser</h3>
+          <p class="product-desc">
+            Dedicated slots for USB drives, SD cards, and microSD cards.
+            Every small thing in its exact place — always findable.
+          </p>
+          <div class="product-footer">
+            <span class="product-price">View on Etsy</span>
+            <a
+                    href="https://etsy.com"
+                    target="_blank"
+                    rel="noopener"
+                    class="product-cta"
+                    aria-label="View Japandi Storage Organiser on Etsy"
+            >
+              Shop now
+              <span class="product-cta-arrow" aria-hidden="true"></span>
+            </a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Product 6 -->
+      <article class="product-card reveal reveal-delay-3">
+        <div class="product-img">
+          <img
+                  src="images/Coaster Set.png"
+                  alt="Kumiko Coaster Set — 4 pieces with holder"
+                  loading="lazy"
+          />
+          <span class="product-badge">Set of 4</span>
+        </div>
+        <div class="product-info">
+          <h3 class="product-name">Kumiko Coaster Set</h3>
+          <p class="product-desc">
+            Four coasters with the Kumiko lattice pattern, plus a matching
+            holder. The only thing on the desk that should make a mark — and
+            doesn't.
+          </p>
+          <div class="product-footer">
+            <span class="product-price">View on Etsy</span>
+            <a
+                    href="https://etsy.com"
+                    target="_blank"
+                    rel="noopener"
+                    class="product-cta"
+                    aria-label="View Kumiko Coaster Set on Etsy"
+            >
+              Shop now
+              <span class="product-cta-arrow" aria-hidden="true"></span>
+            </a>
+          </div>
+        </div>
+      </article>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- ═══ ABOUT ═══════════════════════════════════ -->
-  <section id="about" aria-labelledby="about-heading">
-    <div class="container">
-      <div class="about-grid">
-        <div class="about-copy">
-          <p class="section-label reveal">The studio</p>
-          <blockquote class="about-quote reveal reveal-delay-1">
-            "I wanted objects that disappeared into the desk — visible only when you needed them."
-          </blockquote>
-          <div class="about-body reveal reveal-delay-2">
-            <p>
-              Kumiko Studio started from a simple frustration: most desk accessories are either too loud, too cheap, or designed for a gaming aesthetic that doesn't age well.
-            </p>
-            <p>
-              Everything is designed and produced in-house at my studio in Vienna. Each piece goes through several iterations before it's offered — I keep the catalogue deliberately small. Only objects I would put on my own desk make the cut.
-            </p>
-            <p>
-              The name comes from <em>kumiko</em> (組子), the Japanese woodworking technique of interlocking geometric patterns without nails. It's the intersection of structure and beauty I try to bring to every piece.
-            </p>
-          </div>
-          <dl class="about-spec reveal reveal-delay-3">
-            <div class="spec-item">
-              <dt>Production</dt>
-              <dd>In-house</dd>
-            </div>
-            <div class="spec-item">
-              <dt>Materials</dt>
-              <dd>PLA</dd>
-            </div>
-            <div class="spec-item">
-              <dt>Based in</dt>
-              <dd>Vienna, AT</dd>
-            </div>
-          </dl>
-        </div>
-
-        <div class="about-visual">
-          <div class="about-img-stack">
-            <div class="about-img-main" aria-label="Studio photo placeholder" role="img">
-              <div class="about-img-label">
-                <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <rect x="4" y="8" width="28" height="20" rx="2" stroke="currentColor" stroke-width="1.2"/>
-                  <circle cx="18" cy="18" r="5" stroke="currentColor" stroke-width="1.2"/>
-                  <circle cx="28" cy="12" r="2" stroke="currentColor" stroke-width="1.2"/>
-                </svg>
-                <span>Studio / maker photo</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ═══ GALLERY ══════════════════════════════════ -->
-  <section id="gallery" aria-labelledby="gallery-heading">
-    <div class="container">
-      <div class="gallery-header">
-        <p class="section-label reveal">In context</p>
-        <h2 id="gallery-heading" class="section-title reveal reveal-delay-1">
-          Designed for the desk,<br>not the product page.
-        </h2>
-      </div>
-    </div>
-    <div class="gallery-grid" role="list">
-      <div class="gallery-item" role="listitem">
-        <div class="gallery-img gallery-bg-1" aria-label="Lifestyle desk setup photo" role="img">
-          <div class="gallery-placeholder">
-            <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <rect x="3" y="7" width="26" height="18" rx="2" stroke="currentColor" stroke-width="1.2"/>
-              <circle cx="16" cy="16" r="4" stroke="currentColor" stroke-width="1.2"/>
-            </svg>
-            <span>Desk lifestyle</span>
-          </div>
-        </div>
-      </div>
-      <div class="gallery-item" role="listitem">
-        <div class="gallery-img gallery-bg-2" aria-label="Product detail photo" role="img">
-          <div class="gallery-placeholder">
-            <svg width="28" height="28" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <rect x="3" y="7" width="26" height="18" rx="2" stroke="currentColor" stroke-width="1.2"/>
-              <circle cx="16" cy="16" r="4" stroke="currentColor" stroke-width="1.2"/>
-            </svg>
-            <span>Detail shot</span>
-          </div>
-        </div>
-      </div>
-      <div class="gallery-item" role="listitem">
-        <div class="gallery-img gallery-bg-3" aria-label="Product in use photo" role="img">
-          <div class="gallery-placeholder">
-            <svg width="28" height="28" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <rect x="3" y="7" width="26" height="18" rx="2" stroke="currentColor" stroke-width="1.2"/>
-              <circle cx="16" cy="16" r="4" stroke="currentColor" stroke-width="1.2"/>
-            </svg>
-            <span>In use</span>
-          </div>
-        </div>
-      </div>
-      <div class="gallery-item" role="listitem">
-        <div class="gallery-img gallery-bg-4" aria-label="Morning desk setup photo" role="img">
-          <div class="gallery-placeholder">
-            <svg width="28" height="28" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <rect x="3" y="7" width="26" height="18" rx="2" stroke="currentColor" stroke-width="1.2"/>
-              <circle cx="16" cy="16" r="4" stroke="currentColor" stroke-width="1.2"/>
-            </svg>
-            <span>Morning setup</span>
-          </div>
-        </div>
-      </div>
-      <div class="gallery-item" role="listitem">
-        <div class="gallery-img gallery-bg-5" aria-label="Material detail photo" role="img">
-          <div class="gallery-placeholder">
-            <svg width="28" height="28" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <rect x="3" y="7" width="26" height="18" rx="2" stroke="currentColor" stroke-width="1.2"/>
-              <circle cx="16" cy="16" r="4" stroke="currentColor" stroke-width="1.2"/>
-            </svg>
-            <span>Material detail</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ═══ CONTACT ══════════════════════════════════ -->
-  <section id="contact" aria-labelledby="contact-heading">
-    <div class="container">
-      <div class="contact-inner">
-        <p class="section-label reveal">Get in touch</p>
-        <h2 id="contact-heading" class="section-title reveal reveal-delay-1">
-          Questions, custom orders,<br>or just good taste.
+<!-- ═══ PHILOSOPHY ══════════════════════════════ -->
+<section id="philosophy" aria-labelledby="philosophy-heading">
+  <div class="container">
+    <div class="philosophy-grid">
+      <div class="philosophy-content">
+        <p class="section-label reveal">Design principles</p>
+        <h2
+                id="philosophy-heading"
+                class="section-title reveal reveal-delay-1"
+        >
+          Less, but<br />considered.
         </h2>
         <p class="section-subtitle reveal reveal-delay-2">
-          If you're looking for something specific, or want a colour or size that isn't listed —
-          reach out directly.
+          Every Kumiko Studio object passes a single test: does it make the
+          space better, or does it merely fill it?
         </p>
 
-        <div class="reveal reveal-delay-3">
-          <a href="mailto:hello@kumikostudio.com" class="contact-email" aria-label="Email Kumiko Studio">
-            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-              <rect x="2" y="4" width="16" height="12" rx="2" stroke="currentColor" stroke-width="1.2"/>
-              <path d="M2 6l8 6 8-6" stroke="currentColor" stroke-width="1.2"/>
-            </svg>
-            hello@kumikostudio.com
-          </a>
+        <dl class="philosophy-principles">
+          <div class="principle reveal reveal-delay-1">
+            <dt class="principle-num">01</dt>
+            <dd class="principle-text">
+              <h4>Ma — negative space</h4>
+              <p>
+                Japanese design gives weight to emptiness. Our objects are
+                as defined by what they remove as what they add.
+              </p>
+            </dd>
+          </div>
+          <div class="principle reveal reveal-delay-2">
+            <dt class="principle-num">02</dt>
+            <dd class="principle-text">
+              <h4>Functional geometry</h4>
+              <p>
+                Kumiko joinery patterns carry structural logic, not
+                decoration. Every angle exists because physics required it.
+              </p>
+            </dd>
+          </div>
+          <div class="principle reveal reveal-delay-3">
+            <dt class="principle-num">03</dt>
+            <dd class="principle-text">
+              <h4>Matte over gloss</h4>
+              <p>
+                Surfaces that absorb light feel calmer. We use matte PLA and
+                PETG finishes exclusively. No shine, no noise.
+              </p>
+            </dd>
+          </div>
+        </dl>
+      </div>
 
-          <ul class="social-links" aria-label="Social media links">
-            <li>
-              <a href="https://instagram.com" target="_blank" rel="noopener" class="social-link" aria-label="Kumiko Studio on Instagram">
-                <div class="social-icon">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                    <rect x="2" y="2" width="20" height="20" rx="5" stroke="currentColor" stroke-width="1.5"/>
-                    <circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.5"/>
-                    <circle cx="17.5" cy="6.5" r="1" fill="currentColor"/>
-                  </svg>
-                </div>
-                Instagram
-              </a>
-            </li>
-            <li>
-              <a href="https://tiktok.com" target="_blank" rel="noopener" class="social-link" aria-label="Kumiko Studio on TikTok">
-                <div class="social-icon">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                    <path d="M9 12a4 4 0 100 8 4 4 0 000-8zM9 12V4h4s0 4 4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-                  </svg>
-                </div>
-                TikTok
-              </a>
-            </li>
-            <li>
-              <a href="https://pinterest.com" target="_blank" rel="noopener" class="social-link" aria-label="Kumiko Studio on Pinterest">
-                <div class="social-icon">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                    <path d="M12 2C6.48 2 2 6.48 2 12c0 4.24 2.65 7.86 6.39 9.29-.09-.78-.17-1.98.04-2.83.18-.77 1.22-5.17 1.22-5.17s-.31-.63-.31-1.55c0-1.46.84-2.55 1.89-2.55.89 0 1.32.67 1.32 1.47 0 .9-.57 2.24-.87 3.49-.25 1.04.52 1.89 1.54 1.89 1.85 0 3.27-1.95 3.27-4.77 0-2.49-1.79-4.24-4.35-4.24-2.96 0-4.7 2.22-4.7 4.52 0 .89.34 1.85.77 2.37.08.1.09.19.07.29-.08.33-.26 1.04-.29 1.18-.05.19-.16.23-.37.14-1.39-.65-2.26-2.68-2.26-4.32 0-3.51 2.55-6.74 7.36-6.74 3.86 0 6.86 2.75 6.86 6.43 0 3.83-2.41 6.91-5.76 6.91-1.13 0-2.19-.59-2.55-1.28l-.69 2.6c-.25.97-.93 2.18-1.39 2.92.05.01.1.02.15.03" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-                  </svg>
-                </div>
-                Pinterest
-              </a>
-            </li>
-          </ul>
-
-          <a href="https://etsy.com" target="_blank" rel="noopener" class="btn-primary">Browse the Full Shop →</a>
+      <div
+              class="philosophy-visual reveal"
+              aria-label="Philosophy visual placeholder"
+              role="img"
+      >
+        <!-- Kumiko lattice pattern -->
+        <svg
+                class="kumiko-pattern"
+                viewBox="0 0 300 400"
+                xmlns="http://www.w3.org/2000/svg"
+                aria-hidden="true"
+        >
+          <defs>
+            <pattern
+                    id="kumiko"
+                    x="0"
+                    y="0"
+                    width="50"
+                    height="50"
+                    patternUnits="userSpaceOnUse"
+            >
+              <path
+                      d="M25,0 L50,25 L25,50 L0,25 Z"
+                      fill="none"
+                      stroke="#f7f4ef"
+                      stroke-width="0.8"
+              />
+              <path
+                      d="M25,10 L40,25 L25,40 L10,25 Z"
+                      fill="none"
+                      stroke="#f7f4ef"
+                      stroke-width="0.5"
+              />
+              <line
+                      x1="25"
+                      y1="0"
+                      x2="25"
+                      y2="50"
+                      stroke="#f7f4ef"
+                      stroke-width="0.4"
+              />
+              <line
+                      x1="0"
+                      y1="25"
+                      x2="50"
+                      y2="25"
+                      stroke="#f7f4ef"
+                      stroke-width="0.4"
+              />
+            </pattern>
+          </defs>
+          <rect width="300" height="400" fill="url(#kumiko)" />
+        </svg>
+        <div class="philosophy-img-label">
+          <svg
+                  width="40"
+                  height="40"
+                  viewBox="0 0 40 40"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+          >
+            <rect
+                    x="4"
+                    y="4"
+                    width="32"
+                    height="32"
+                    stroke="#f7f4ef"
+                    stroke-width="1"
+            />
+            <path
+                    d="M4 4l32 32M36 4L4 36"
+                    stroke="#f7f4ef"
+                    stroke-width="0.6"
+                    opacity="0.5"
+            />
+          </svg>
+          <p>Product photo</p>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- ═══ FOOTER ═══════════════════════════════════ -->
-  <footer aria-label="Site footer">
-    <div class="container">
-      <div class="footer-inner">
-        <span class="footer-logo">Kumiko Studio</span>
-        <p class="footer-copy">© 2025 Kumiko Studio. All objects made by hand in Vienna.</p>
+<!-- ═══ ABOUT ═══════════════════════════════════ -->
+<section id="about" aria-labelledby="about-heading">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-copy">
+        <p class="section-label reveal">The studio</p>
+        <blockquote class="about-quote reveal reveal-delay-1">
+          "I wanted objects that disappeared into the desk — visible only
+          when you needed them."
+        </blockquote>
+        <div class="about-body reveal reveal-delay-2">
+          <p>
+            Kumiko Studio started from a simple frustration: most desk
+            accessories are either too loud, too cheap, or designed for a
+            gaming aesthetic that doesn't age well.
+          </p>
+          <p>
+            Everything is designed and produced in-house at my studio in
+            Vienna. Each piece goes through several iterations before it's
+            offered — I keep the catalogue deliberately small. Only objects
+            I would put on my own desk make the cut.
+          </p>
+          <p>
+            The name comes from <em>kumiko</em> (組子), the Japanese
+            woodworking technique of interlocking geometric patterns without
+            nails. It's the intersection of structure and beauty I try to
+            bring to every piece.
+          </p>
+        </div>
+        <dl class="about-spec reveal reveal-delay-3">
+          <div class="spec-item">
+            <dt>Production</dt>
+            <dd>In-house</dd>
+          </div>
+          <div class="spec-item">
+            <dt>Materials</dt>
+            <dd>PLA / PETG</dd>
+          </div>
+          <div class="spec-item">
+            <dt>Based in</dt>
+            <dd>Vienna, AT</dd>
+          </div>
+        </dl>
+      </div>
+
+      <div class="about-visual">
+        <div class="about-img-stack">
+          <div
+                  class="about-img-main"
+                  aria-label="Studio photo placeholder"
+                  role="img"
+          >
+            <div class="about-img-label">
+              <svg
+                      width="36"
+                      height="36"
+                      viewBox="0 0 36 36"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+              >
+                <rect
+                        x="4"
+                        y="8"
+                        width="28"
+                        height="20"
+                        rx="2"
+                        stroke="currentColor"
+                        stroke-width="1.2"
+                />
+                <circle
+                        cx="18"
+                        cy="18"
+                        r="5"
+                        stroke="currentColor"
+                        stroke-width="1.2"
+                />
+                <circle
+                        cx="28"
+                        cy="12"
+                        r="2"
+                        stroke="currentColor"
+                        stroke-width="1.2"
+                />
+              </svg>
+              <span>Studio / maker photo</span>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-  </footer>
+  </div>
+</section>
 
-  <!-- ═══ SCRIPT ═══════════════════════════════════ -->
-  <script>
-    // ── Nav on scroll ──────────────────────────────
-    const nav = document.getElementById('nav');
-    const onScroll = () => {
-      nav.classList.toggle('scrolled', window.scrollY > 40);
-    };
-    window.addEventListener('scroll', onScroll, { passive: true });
+<!-- ═══ GALLERY ══════════════════════════════════ -->
+<section id="gallery" aria-labelledby="gallery-heading">
+  <div class="container">
+    <div class="gallery-header">
+      <p class="section-label reveal">In context</p>
+      <h2 id="gallery-heading" class="section-title reveal reveal-delay-1">
+        Designed for the desk,<br />not the product page.
+      </h2>
+    </div>
+  </div>
+  <div class="gallery-grid" role="list">
+    <div class="gallery-item" role="listitem">
+      <div
+              class="gallery-img gallery-bg-1"
+              aria-label="Lifestyle desk setup photo"
+              role="img"
+      >
+        <div class="gallery-placeholder">
+          <svg
+                  width="32"
+                  height="32"
+                  viewBox="0 0 32 32"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+          >
+            <rect
+                    x="3"
+                    y="7"
+                    width="26"
+                    height="18"
+                    rx="2"
+                    stroke="currentColor"
+                    stroke-width="1.2"
+            />
+            <circle
+                    cx="16"
+                    cy="16"
+                    r="4"
+                    stroke="currentColor"
+                    stroke-width="1.2"
+            />
+          </svg>
+          <span>Desk lifestyle</span>
+        </div>
+      </div>
+    </div>
+    <div class="gallery-item" role="listitem">
+      <div
+              class="gallery-img gallery-bg-2"
+              aria-label="Product detail photo"
+              role="img"
+      >
+        <div class="gallery-placeholder">
+          <svg
+                  width="28"
+                  height="28"
+                  viewBox="0 0 32 32"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+          >
+            <rect
+                    x="3"
+                    y="7"
+                    width="26"
+                    height="18"
+                    rx="2"
+                    stroke="currentColor"
+                    stroke-width="1.2"
+            />
+            <circle
+                    cx="16"
+                    cy="16"
+                    r="4"
+                    stroke="currentColor"
+                    stroke-width="1.2"
+            />
+          </svg>
+          <span>Detail shot</span>
+        </div>
+      </div>
+    </div>
+    <div class="gallery-item" role="listitem">
+      <div
+              class="gallery-img gallery-bg-3"
+              aria-label="Product in use photo"
+              role="img"
+      >
+        <div class="gallery-placeholder">
+          <svg
+                  width="28"
+                  height="28"
+                  viewBox="0 0 32 32"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+          >
+            <rect
+                    x="3"
+                    y="7"
+                    width="26"
+                    height="18"
+                    rx="2"
+                    stroke="currentColor"
+                    stroke-width="1.2"
+            />
+            <circle
+                    cx="16"
+                    cy="16"
+                    r="4"
+                    stroke="currentColor"
+                    stroke-width="1.2"
+            />
+          </svg>
+          <span>In use</span>
+        </div>
+      </div>
+    </div>
+    <div class="gallery-item" role="listitem">
+      <div
+              class="gallery-img gallery-bg-4"
+              aria-label="Morning desk setup photo"
+              role="img"
+      >
+        <div class="gallery-placeholder">
+          <svg
+                  width="28"
+                  height="28"
+                  viewBox="0 0 32 32"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+          >
+            <rect
+                    x="3"
+                    y="7"
+                    width="26"
+                    height="18"
+                    rx="2"
+                    stroke="currentColor"
+                    stroke-width="1.2"
+            />
+            <circle
+                    cx="16"
+                    cy="16"
+                    r="4"
+                    stroke="currentColor"
+                    stroke-width="1.2"
+            />
+          </svg>
+          <span>Morning setup</span>
+        </div>
+      </div>
+    </div>
+    <div class="gallery-item" role="listitem">
+      <div
+              class="gallery-img gallery-bg-5"
+              aria-label="Material detail photo"
+              role="img"
+      >
+        <div class="gallery-placeholder">
+          <svg
+                  width="28"
+                  height="28"
+                  viewBox="0 0 32 32"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+          >
+            <rect
+                    x="3"
+                    y="7"
+                    width="26"
+                    height="18"
+                    rx="2"
+                    stroke="currentColor"
+                    stroke-width="1.2"
+            />
+            <circle
+                    cx="16"
+                    cy="16"
+                    r="4"
+                    stroke="currentColor"
+                    stroke-width="1.2"
+            />
+          </svg>
+          <span>Material detail</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-    // ── Scroll reveal ──────────────────────────────
-    const reveals = document.querySelectorAll('.reveal');
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach(e => {
-          if (e.isIntersecting) {
-            e.target.classList.add('visible');
-            observer.unobserve(e.target);
-          }
-        });
-      },
-      { threshold: 0.12, rootMargin: '0px 0px -40px 0px' }
-    );
-    reveals.forEach(el => observer.observe(el));
+<!-- ═══ CONTACT ══════════════════════════════════ -->
+<section id="contact" aria-labelledby="contact-heading">
+  <div class="container">
+    <div class="contact-inner">
+      <p class="section-label reveal">Get in touch</p>
+      <h2 id="contact-heading" class="section-title reveal reveal-delay-1">
+        Questions, custom orders,<br />or just good taste.
+      </h2>
+      <p class="section-subtitle reveal reveal-delay-2">
+        If you're looking for something specific, or want a colour or size
+        that isn't listed — reach out directly.
+      </p>
 
-    // Trigger hero reveals immediately
-    document.querySelectorAll('#hero .reveal').forEach(el => {
-      el.classList.add('visible');
-    });
-  </script>
+      <div class="reveal reveal-delay-3">
+        <a
+                href="mailto:hello@kumikostudio.com"
+                class="contact-email"
+                aria-label="Email Kumiko Studio"
+        >
+          <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 20 20"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  aria-hidden="true"
+          >
+            <rect
+                    x="2"
+                    y="4"
+                    width="16"
+                    height="12"
+                    rx="2"
+                    stroke="currentColor"
+                    stroke-width="1.2"
+            />
+            <path
+                    d="M2 6l8 6 8-6"
+                    stroke="currentColor"
+                    stroke-width="1.2"
+            />
+          </svg>
+          hello@kumikostudio.com
+        </a>
+
+        <ul class="social-links" aria-label="Social media links">
+          <li>
+            <a
+                    href="https://www.instagram.com/kumikostudio3d"
+                    target="_blank"
+                    rel="noopener"
+                    class="social-link"
+                    aria-label="Kumiko Studio on Instagram"
+            >
+              <div class="social-icon">
+                <svg
+                        width="16"
+                        height="16"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                        aria-hidden="true"
+                >
+                  <rect
+                          x="2"
+                          y="2"
+                          width="20"
+                          height="20"
+                          rx="5"
+                          stroke="currentColor"
+                          stroke-width="1.5"
+                  />
+                  <circle
+                          cx="12"
+                          cy="12"
+                          r="4"
+                          stroke="currentColor"
+                          stroke-width="1.5"
+                  />
+                  <circle cx="17.5" cy="6.5" r="1" fill="currentColor" />
+                </svg>
+              </div>
+              Instagram
+            </a>
+          </li>
+          <li>
+            <a
+                    href="https://www.tiktok.com/@kumikostudio3d"
+                    target="_blank"
+                    rel="noopener"
+                    class="social-link"
+                    aria-label="Kumiko Studio on TikTok"
+            >
+              <div class="social-icon">
+                <svg
+                        width="16"
+                        height="16"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                        aria-hidden="true"
+                >
+                  <path
+                          d="M9 12a4 4 0 100 8 4 4 0 000-8zM9 12V4h4s0 4 4 4"
+                          stroke="currentColor"
+                          stroke-width="1.5"
+                          stroke-linecap="round"
+                  />
+                </svg>
+              </div>
+              TikTok
+            </a>
+          </li>
+          <li>
+            <a
+                    href="https://pinterest.com/kumikostudio3d"
+                    target="_blank"
+                    rel="noopener"
+                    class="social-link"
+                    aria-label="Kumiko Studio on Pinterest"
+            >
+              <div class="social-icon">
+                <svg
+                        width="16"
+                        height="16"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                        aria-hidden="true"
+                >
+                  <path
+                          d="M12 2C6.48 2 2 6.48 2 12c0 4.24 2.65 7.86 6.39 9.29-.09-.78-.17-1.98.04-2.83.18-.77 1.22-5.17 1.22-5.17s-.31-.63-.31-1.55c0-1.46.84-2.55 1.89-2.55.89 0 1.32.67 1.32 1.47 0 .9-.57 2.24-.87 3.49-.25 1.04.52 1.89 1.54 1.89 1.85 0 3.27-1.95 3.27-4.77 0-2.49-1.79-4.24-4.35-4.24-2.96 0-4.7 2.22-4.7 4.52 0 .89.34 1.85.77 2.37.08.1.09.19.07.29-.08.33-.26 1.04-.29 1.18-.05.19-.16.23-.37.14-1.39-.65-2.26-2.68-2.26-4.32 0-3.51 2.55-6.74 7.36-6.74 3.86 0 6.86 2.75 6.86 6.43 0 3.83-2.41 6.91-5.76 6.91-1.13 0-2.19-.59-2.55-1.28l-.69 2.6c-.25.97-.93 2.18-1.39 2.92.05.01.1.02.15.03"
+                          stroke="currentColor"
+                          stroke-width="1.5"
+                          stroke-linecap="round"
+                  />
+                </svg>
+              </div>
+              Pinterest
+            </a>
+          </li>
+        </ul>
+
+        <a
+                href="https://etsy.com"
+                target="_blank"
+                rel="noopener"
+                class="btn-primary"
+        >Browse the Full Shop →</a
+        >
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FOOTER ═══════════════════════════════════ -->
+<footer aria-label="Site footer">
+  <div class="container">
+    <div class="footer-inner">
+      <span class="footer-logo">Kumiko Studio</span>
+      <p class="footer-copy">
+        © 2025 Kumiko Studio. All objects made by hand in Vienna.
+      </p>
+    </div>
+  </div>
+</footer>
+
+<!-- ═══ SCRIPT ═══════════════════════════════════ -->
+<script>
+  // ── Nav on scroll ──────────────────────────────
+  const nav = document.getElementById("nav");
+  const onScroll = () => {
+    nav.classList.toggle("scrolled", window.scrollY > 40);
+  };
+  window.addEventListener("scroll", onScroll, { passive: true });
+
+  // ── Scroll reveal ──────────────────────────────
+  const reveals = document.querySelectorAll(".reveal");
+  const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((e) => {
+              if (e.isIntersecting) {
+                e.target.classList.add("visible");
+                observer.unobserve(e.target);
+              }
+            });
+          },
+          { threshold: 0.12, rootMargin: "0px 0px -40px 0px" },
+  );
+  reveals.forEach((el) => observer.observe(el));
+
+  // Trigger hero reveals immediately
+  document.querySelectorAll("#hero .reveal").forEach((el) => {
+    el.classList.add("visible");
+  });
+</script>
 </body>
 </html>
